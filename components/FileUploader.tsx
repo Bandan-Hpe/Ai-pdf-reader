@@ -27,12 +27,14 @@ function FileUploader() {
           ) : (
             <>
               <CircleArrowDown className="h-20 w-20 animate-bounce" />
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <p>
+                Drag &apos;n&apos; drop some files here, or click to select
+                files
+              </p>
             </>
           )}
         </div>
       </div>
-      
     </div>
   );
 }
