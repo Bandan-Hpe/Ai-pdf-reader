@@ -1,4 +1,4 @@
-export const dynamic = "forced-dynamic";
+
 
 import Document from "@/components/Document";
 
