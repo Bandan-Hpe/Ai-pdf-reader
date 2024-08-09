@@ -1,32 +1,33 @@
-"use client";
-
-import {
-  SignIn,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { FilePlus2 } from "lucide-react";
 
 function Header() {
-  const { user } = useUser();
   return (
-    <div className="flex items-center justify-between p-3">
-      {user && (
-        <h1 className="text-xl text-bold">
-          {user?.firstName} Space
-        </h1>
-      )}
-      {/* BredCrumb */}
-      <div>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
+    <div className="flex justify-between bg-white shadow-md p-5 border-b">
+      <Link href="/dashboard" className="text-2xl">
+        Chat to <span className="text-indigo-600">PDF</span>
+      </Link>
+
+      <SignedIn>
+        <div className="flex items-center space-x-2">
+          <Button asChild variant="link" className="hidden md:flex">
+            <Link href="/dashboard/upgrade">Pricing</Link>
+          </Button>
+          <Button asChild variant="outline" className="hidden md:flex">
+            <Link href="/dashboard">Document</Link>
+          </Button>
+          <Button asChild variant="outline" className="hidden md:flex">
+            <Link href="/dashboard/upload">
+              <FilePlus2 className="text-indigo-600"/>
+            </Link>
+          </Button>
+
+          {/* upgrade button */}
           <UserButton />
-        </SignedIn>
-      </div>
+        </div>
+      </SignedIn>
     </div>
   );
 }
